@@ -3,13 +3,13 @@ import { Link } from "react-router-dom";
 
 const Restaurant = (props) => {
   const [restaurant, setRestaurant] = useState([])
-  const [comment, setComment] = useState({ restaurant_id: "", username: "", description: "" })
+  const [comment, setComment] = useState({ restaurant_id: "", username: "", text: "" })
 
   useEffect(() => {
     const id = props.match.params.id
     comment.restaurant_id = id
     fetch(`/api/v1/restaurants/${id}`).then(res => res.json()).then(data => setRestaurant({...data}));
-  }, [restaurant])
+  }, [])
 
   const handleChange = e => {
     setComment({ ...comment, [e.target.name]: e.target.value })
@@ -28,7 +28,11 @@ const Restaurant = (props) => {
         'Content-Type': 'application/json',
         'X-CSRF-TOKEN': document.querySelector('[name=csrf-token]').content
       }
-    }).then(response => response.json()).then(data => console.log(data)).catch(error => console.log("error", error));
+    }).then(response => response.json()).then(query => {
+      let restaurantCopy = restaurant
+      restaurantCopy.comments.unshift(query)
+      setRestaurant({...restaurantCopy})
+    }).catch(error => console.log("error", error));
   }
 
   return (
