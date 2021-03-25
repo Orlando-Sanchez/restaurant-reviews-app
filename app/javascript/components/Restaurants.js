@@ -10,16 +10,23 @@ const Restaurants = () => {
 
   return (
     <div>
-      <div>sdsdsds</div>
-    <div>
-      {restaurants.map(restaurant => (      
-        <div key={restaurant.id}>
-          <p>{restaurant.name}</p>
-          <p>{restaurant.description}</p>
-          <Link to={`/restaurants/${restaurant.id}`}>Ver más...</Link>
+      <header className="home-header">
+        <h1>Restaurant Reviews</h1>
+      </header>
+      <main>
+        <div>
+          <p>¡Aquí podrás describirnos tu experiencia en diversos restaurantes!</p>
+        </div>       
+        <div>
+          {restaurants.map(restaurant => (      
+            <div key={restaurant.id}>
+              <p>{restaurant.name}</p>
+              <p>{restaurant.description}</p>
+              <Link to={`/restaurants/${restaurant.id}`}>Ver más...</Link>
+            </div>
+          ))}
         </div>
-      ))}
-    </div>
+      </main>
     </div>
   )
 }

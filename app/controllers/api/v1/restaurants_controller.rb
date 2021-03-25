@@ -9,7 +9,9 @@ module Api
       
       def show
         @restaurant = Restaurant.where('id = ?', params[:id]).first
-        render json: @restaurant
+        respond_to do |format|
+          format.json  { render json: @restaurant.to_json(include: [:comments])}
+        end
       end
 
       private

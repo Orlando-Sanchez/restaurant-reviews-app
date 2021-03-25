@@ -5,3 +5,12 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+require 'faker'
+
+# 50.times do |n|
+#   name  = Faker::Restaurant.name
+#   description = Faker::Lorem.paragraph(sentence_count: 3)
+#   Restaurant.create!(name:  name,
+#                description: description)
+# end
