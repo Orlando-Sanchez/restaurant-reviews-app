@@ -8,7 +8,9 @@ const Restaurant = (props) => {
   useEffect(() => {
     const id = props.match.params.id
     comment.restaurant_id = id
-    fetch(`/api/v1/restaurants/${id}`).then(res => res.json()).then(data => setRestaurant({...data}));
+    fetch(`/api/v1/restaurants/${id}`).then(res => res.json()).then(data => { 
+      console.log() 
+      setRestaurant({...data})} );
   }, [])
 
   const handleChange = e => {

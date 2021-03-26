@@ -5,7 +5,9 @@ const Restaurants = () => {
   const [restaurants, setRestaurants] = useState([])
 
   useEffect(() => {
-    fetch('/api/v1/restaurants').then(res => res.json()).then(data => setRestaurants(data))
+    fetch('/api/v1/restaurants').then(res => res.json()).then(data => {
+      console.log(data) 
+      setRestaurants(data)})
   }, []);
 
   return (
@@ -20,6 +22,7 @@ const Restaurants = () => {
         <div>
           {restaurants.map(restaurant => (      
             <div key={restaurant.id}>
+              <img src={restaurant.images} alt="food"/>
               <p>{restaurant.name}</p>
               <p>{restaurant.description}</p>
               <Link to={`/restaurants/${restaurant.id}`}>Ver más...</Link>

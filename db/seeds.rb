@@ -8,9 +8,11 @@
 
 require 'faker'
 
-# 50.times do |n|
-#   name  = Faker::Restaurant.name
-#   description = Faker::Lorem.paragraph(sentence_count: 3)
-#   Restaurant.create!(name:  name,
-#                description: description)
-# end
+50.times do |n|
+  name  = Faker::Restaurant.name
+  description = Faker::Lorem.paragraph(sentence_count: 3)
+  restaurant = Restaurant.create!(name:  name,
+               description: description)
+  restaurant.images.attach(io: File.open('app/assets/images/descarga (1).jpeg'), filename: 'descarga (1).jpeg', content_type: 'image/jpeg') 
+
+end
