@@ -10,5 +10,5 @@ Rails.application.routes.draw do
     end
   end
 
-  get "*path", to: "pages#index"
+  get "*path", to: "pages#index", constraints: -> (req) { !(req.fullpath =~ /^\/rails\/.*/) }
 end
